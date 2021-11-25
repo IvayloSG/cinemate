@@ -9,8 +9,8 @@ function Header() {
                     <li className="header-nav-container-list-element">Home</li>
                     <li className="header-nav-container-list-element">Explore</li>
                     <li className="header-nav-container-list-element">MyPlace</li>
-                    <li className="header-nav-container-list-element logout">Logout</li>
-                    <li className="header-nav-container-list-element">Login</li>
+                    <li className="header-nav-container-list-element log-action">Logout</li>
+                    <li className="header-nav-container-list-element log-action">Login</li>
                     <li className="header-nav-container-list-element">Register</li>
                 </ul>
             </section>
