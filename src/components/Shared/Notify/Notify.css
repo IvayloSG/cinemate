@@ -1,0 +1,14 @@
+.notification {
+    background-color: #9A5DC6;
+    display: inline-block;
+    position: absolute;
+    padding: 25px;
+    border-radius: 10px;
+    top: -75px;
+    right: 13%;
+}
+
+.notification-text {
+    display: inline-block;
+    margin: 0px;
+}
