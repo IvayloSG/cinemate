@@ -1,0 +1,11 @@
+.perks {
+    background-color: #9A5DC6;
+    margin-top: 0;
+}
+
+.perks-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: space-around;
+}

@@ -34,6 +34,15 @@
     margin: 1px;
 }
 
+.header-nav-container-list-element-link {
+    text-decoration: none;
+    color: #54546D;
+}
+
+.header-nav-container-list-element-link:hover {
+    color: #9A5DC6;
+}
+
 .header-nav-container-list-element:hover {
     color: #9A5DC6;
 }
