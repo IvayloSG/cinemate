@@ -1,7 +1,7 @@
-import "./Footer.css"
-import "../Shared/Notify/Notify"
-import Notify from "../Shared/Notify/Notify";
-import { useState } from 'react'
+import { useState } from 'react';
+import Notify from '../Shared/Notify/Notify';
+import '../Shared/Notify/Notify';
+import './Footer.css';
 
 function Footer() {
     const notificationMessage = "This feature will be implemented soon!";
@@ -22,7 +22,7 @@ function Footer() {
                 <section className="footer-container-icons">
                     {notify ? <Notify message={notificationMessage} /> : ''}
                     <p className="footer-container-icons-text">Soon on:</p>
-                    <ul className="footer-container-icons-list" onClick={onClickHandler}>
+                    <ul className="footer-container-icons-list" onClick={ onClickHandler }>
                         <li className="footer-container-icons-list-element">
                             <i className="fab fa-facebook"></i>
                         </li>

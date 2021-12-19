@@ -1,23 +1,32 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Explore from './components/Explore/Explore'
-import Header from './components/Header/Header'
-import Home from './components/Home/Home'
-import Footer from './components/Footer/Footer'
+import { AuthProvider } from './contexts/AuthContext';
+import Explore from './components/Explore/Explore';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout';
+import Register from './components/Register/Register';
 import './App.css';
 
 function App() {
   return (
-    <div className="app-container">
-      <Header/>
-      <main id="site-content">
+    <AuthProvider>
+      <div className="app-container">
+        <Header />
+        <main id="site-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
-      <Footer/>
-    </div>
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 
