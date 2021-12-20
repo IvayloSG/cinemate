@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom'
+
+import { useAuthContext } from '../../../contexts/AuthContext';
 import './Welcome.css'
 
 function Welcome() {
+    const authData = useAuthContext();
+
+    const signButtons = (
+        <div className="welcome-content-buttons">
+            <Link to="/register" className="welcome-content-buttons-button log-action">Register</Link>
+            <Link to="/login" className="welcome-content-buttons-button log-action">Log In</Link>
+        </div>
+    );
+
     return (
         <section className="welcome">
             <article className="welcome-content">
@@ -10,10 +21,10 @@ function Welcome() {
                     Some very nice and inspiring text. That will explain how great is the
                     product and how much it will help my development as a programmer.
                 </p>
-                <div className="welcome-content-buttons">
-                    <Link to="/register" className="welcome-content-buttons-button">Register</Link>
-                    <Link to="/login" className="welcome-content-buttons-button">Log In</Link>
-                </div>
+                {authData.user
+                    ? ''
+                    : signButtons
+                }
             </article>
             <div className="welcome-picture-container">
                 <img className="welcome-picture" src="https://i.postimg.cc/DmkcYpY3/Welcome-Header-Pic.jpg" alt="cinema pic" />

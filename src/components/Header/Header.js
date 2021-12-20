@@ -4,8 +4,8 @@ import { useAuthContext } from '../../contexts/AuthContext'
 import './Header.css'
 
 function Header() {
-    const user = useAuthContext();
-    console.log(user);
+    const authData = useAuthContext();
+    console.log(authData);
 
     const userNav = (
         <ul className="header-nav-container-list">
@@ -15,7 +15,12 @@ function Header() {
             <li className="header-nav-container-list-element">
                 <Link className="header-nav-container-list-element-link" to="/explore">Explore</Link>
             </li>
-            <li className="header-nav-container-list-element">MyPlace</li>
+            <li className="header-nav-container-list-element">
+                <Link className="header-nav-container-list-element-link" to="/reviews">Reviews</Link>
+            </li>
+            <li className="header-nav-container-list-element">
+                <Link className="header-nav-container-list-element-link" to="/profile">My Place</Link>
+            </li>
             <li className="header-nav-container-list-element">
                 <Link className="header-nav-container-list-element-link log-action" to="/logout">LogOut</Link>
             </li>
@@ -37,7 +42,7 @@ function Header() {
         <nav className="header-nav">
             <section className="header-nav-container">
                 <h2 className="header-nav-container-logo">Cinemate</h2>
-                {user.user
+                {authData.user
                     ? userNav
                     : guestNav
                 }
