@@ -1,0 +1,14 @@
+.explore {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.explore-movies {
+    width: 75%;
+}
+
+.explore-sidebar {
+    width: 22%;
+}

@@ -1,0 +1,73 @@
+.sidebar {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  width: 100%;
+  height: 655px;
+  padding: 20px 0px 200px 0px;
+  background-color: #9a5dc6;
+  box-shadow: 5px 5px 5px 5px rgba(50, 50, 50, 0.28);
+  position: sticky;
+  top: 5%;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar-list-element {
+  padding: 10px 20px;
+  position: relative;
+}
+
+.sidebar-list-element-link {
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #e6e6e6;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-list-element::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.sidebar-list-element:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.sidebar-list-element::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: #54546d;
+  z-index: 0;
+  transition: transform 0.5s ease;
+}
+
+.sidebar-scroll-up {
+    width: 72px;
+    margin: 0 auto;
+    position: relative;
+    bottom: -260px;
+}
+
+.fa-chevron-circle-up {
+  font-size: 72px;
+  color: #e6e6e6;
+  text-align: center;
+}
+
+.fa-chevron-circle-up:hover {
+    transform: scale(1.2);
+    color: #54546D;
+}
