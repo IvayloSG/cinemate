@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useAuthContext } from '../../contexts/AuthContext'
 import './Header.css'
 
 function Header() {
     const authData = useAuthContext();
-    console.log(authData);
+    const navigate = useNavigate();
+
+    const onClickLogoHandler = () => {
+        navigate('/');
+    }
 
     const userNav = (
         <ul className="header-nav-container-list">
@@ -41,7 +45,7 @@ function Header() {
     return (
         <nav className="header-nav">
             <section className="header-nav-container">
-                <h2 className="header-nav-container-logo">Cinemate</h2>
+                <h2 className="header-nav-container-logo" onClick={onClickLogoHandler}>Cinemate</h2>
                 {authData.user
                     ? userNav
                     : guestNav

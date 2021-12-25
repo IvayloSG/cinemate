@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
 
-import { register } from '../../services/authService.js'
+import { register, addUserToCollection } from '../../services/authService.js'
 import './Register.css'
 
 function Register() {
@@ -62,18 +62,25 @@ function Register() {
         }
 
         register(email, password)
-        .then(() => {
+        .then((result) => {
+            const userData = {
+                id: result.user.uid,
+                email: email,
+                registrationDate: new Date().toLocaleString(),
+                watchList: [],
+                reviews: []
+            }
+            addUserToCollection(userData)
+
             navigate('/');
           })
           .catch((error) => {
             const errorMessage = error.message;
-
             setErrorState (errorMessage);
             setTimeout(() => {
                 setErrorState('');
             }, 10000)
           });
-
     } 
 
     const registerClickErrorHandler = () => {

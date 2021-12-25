@@ -1,10 +1,17 @@
-import constants from "../../../constants.js";
+import { useNavigate } from 'react-router-dom';
 
+import constants from "../../../constants.js";
 import "./MovieCard.css";
 
 function MovieCard({ movie }) {
+  const navigate = useNavigate();
+
+  const onClickHandler = () => {
+    navigate(`/details/${movie.id}`)
+  }
+
   return (
-    <section className="movie-card">
+    <section className="movie-card" onClick={onClickHandler}>
       <article className="movie-card-img">
         <img
           className="movie-card-img-picture"

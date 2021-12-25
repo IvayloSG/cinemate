@@ -13,8 +13,6 @@ function PopularMovies() {
     });
   }, []);
 
-  console.log(popularMovies);
-
   return (
     <section className="popular-movies">
       {popularMovies.map(m => <MovieCard key={m.id} movie={m} />)}

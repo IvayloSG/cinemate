@@ -39,6 +39,8 @@
 
 .welcome-picture-container {
     align-items: flex-end;
+    position: relative;
+    bottom: -45px;
 }
 
 .welcome-picture {

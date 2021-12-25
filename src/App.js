@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
+import MovieDetails from "./components/Shared/MovieDetails/MovieDetails";
 import NotFound from "./components/Shared/NotFound/NotFound";
 import Profile from "./components/Profile/Profile";
 import Register from "./components/Register/Register";
@@ -27,6 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/details/:movieId" element={<MovieDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

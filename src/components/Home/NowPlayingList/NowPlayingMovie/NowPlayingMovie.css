@@ -1,11 +1,18 @@
 .now-playing-movie {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     max-width: 23%;
     box-shadow: 5px 5px 5px 5px rgba(50, 50, 50, 0.28);
     border-radius: 10px;
     background-color: #54546D;
     color: #e6e6e6;
     text-align: center;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.now-playing-movie:hover {
+    transform: scale(1.1);
+    transition: all 1s;
 }
 
 .now-playing-movie-content-title {

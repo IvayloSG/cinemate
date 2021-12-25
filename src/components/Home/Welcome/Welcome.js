@@ -15,6 +15,9 @@ function Welcome() {
 
     return (
         <section className="welcome">
+              <div className="welcome-picture-container">
+                <img className="welcome-picture" src="https://i.postimg.cc/DmkcYpY3/Welcome-Header-Pic.jpg" alt="cinema pic" />
+            </div>
             <article className="welcome-content">
                 <h1 className="welcome-content-title">Welcome to Cinemate</h1>
                 <p className="welcome-content-text">
@@ -26,9 +29,6 @@ function Welcome() {
                     : signButtons
                 }
             </article>
-            <div className="welcome-picture-container">
-                <img className="welcome-picture" src="https://i.postimg.cc/DmkcYpY3/Welcome-Header-Pic.jpg" alt="cinema pic" />
-            </div>
         </section>
     );
 }

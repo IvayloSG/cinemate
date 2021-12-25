@@ -1,9 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+
 import constants from '../../../../constants'
 import './NowPlayingMovie.css';
 
 function NowPlayingMovie({ movie }) {
+    const navigate = useNavigate();
+
+    const onClickHandler = () => {
+        navigate(`/details/${movie.id}`);
+    }
+    
     return (
-        <article className="now-playing-movie">
+        <article className="now-playing-movie" onClick={onClickHandler}>
             <section className="now-playing-movie-picture-container">
                 <img className="now-playing-movie-picture" src={constants.apiImageUrl + movie.poster_path} alt="movie-cover" />
             </section>
