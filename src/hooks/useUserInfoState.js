@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import { getUserById } from '../services/authService';
 
-const useUserInfoState = (userId) => {
+const useUserInfoState = (currentUser) => {
+    const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState({});
 
     useEffect(() => {
-        getUserById(userId)
+        if (!currentUser) {
+            navigate('/login');
+            return;
+        }
+        getUserById(currentUser.uid)
             .then(user => {
                 setUserInfo(user);
             })
-    }, [userId]);
+    }, [currentUser, navigate]);
 
     return [
         userInfo,

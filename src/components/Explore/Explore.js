@@ -1,5 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+import { useAuthContext } from '../../contexts/AuthContext';
 import DailyTrending from "./DailyTrending/DailyTrending";
 import PopularMovies from "./PopularMovies/PopularMovies";
 import TopRated from "./TopRated/TopRated";
@@ -9,6 +11,12 @@ import WeeklyTrending from "./WeeklyTrending/WeeklyTrending";
 import "./Explore.css";
 
 function Explore() {
+const navigate = useNavigate();
+const authData = useAuthContext();
+if (!authData.user) {
+  navigate('/login');
+}
+
   return (
     <section className="explore">
       <section className="explore-movies">

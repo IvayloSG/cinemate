@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
 
 import { register, addUserToCollection } from '../../services/authService.js'
+import { useAuthContext } from '../../contexts/AuthContext.js';
 import './Register.css'
 
 function Register() {
     const navigate = useNavigate();
     const [errorState, setErrorState] = useState("");
+    const authData = useAuthContext();
+
+    useEffect(() => {
+        if (authData.user) {
+            navigate('/profile');
+        }
+    }, [authData.user, navigate]);
 
     const registerSubmitHandler = (e) => {
         e.preventDefault();

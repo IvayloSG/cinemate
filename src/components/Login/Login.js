@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 
+import { useAuthContext } from '../../contexts/AuthContext.js';
 import { login } from '../../services/authService.js'
 import './Login.css'
 
 function Login() {
     const navigate = useNavigate();
+    const authData = useAuthContext();
     const [errorState, setErrorState] = useState('');
+
+    if (authData.user) {
+        navigate('/profile');
+    }
 
     const loginSubmitHandler = (e) => {
         e.preventDefault();
@@ -36,16 +42,16 @@ function Login() {
         }
 
         login(email, password)
-        .then(() => {
-            navigate('/');
-          })
-          .catch((error) => {
-            setErrorState(error.message);
+            .then(() => {
+                navigate('/');
+            })
+            .catch((error) => {
+                setErrorState(error.message);
 
-            setTimeout(() => {
-                setErrorState('');
-            }, 10000);
-          });
+                setTimeout(() => {
+                    setErrorState('');
+                }, 10000);
+            });
     }
 
     const loginClickErrorHandler = () => {

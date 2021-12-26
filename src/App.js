@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import CreateReview from "./components/Reviews/CreateReview/CreateReview";
+import EditReview from "./components/Reviews/EditReview/EditRevieview";
 import Explore from "./components/Explore/Explore";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -29,6 +31,8 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
             <Route path="/details/:movieId" element={<MovieDetails />} />
+            <Route path="/reviews/create" element={<CreateReview />} />
+            <Route path="/reviews/edit" element={<EditReview />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

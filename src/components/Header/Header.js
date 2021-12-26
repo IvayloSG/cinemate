@@ -34,6 +34,9 @@ function Header() {
     const guestNav = (
         <ul className="header-nav-container-list">
             <li className="header-nav-container-list-element">
+                <Link className="header-nav-container-list-element-link" to="/">Home</Link>
+            </li>
+            <li className="header-nav-container-list-element">
                 <Link className="header-nav-container-list-element-link log-action" to="/login">Login</Link>
             </li>
             <li className="header-nav-container-list-element">

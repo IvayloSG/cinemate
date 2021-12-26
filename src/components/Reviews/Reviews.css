@@ -1,0 +1,6 @@
+.reviews {
+    position: relative;
+    min-height: 75vh;
+    max-width: 1400px;
+    margin: 40px auto;
+}

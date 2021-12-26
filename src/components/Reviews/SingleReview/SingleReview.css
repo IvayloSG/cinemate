@@ -1,0 +1,65 @@
+.review {
+    background-color: #54546D;
+    box-shadow: 5px 5px 5px 5px rgba(50, 50, 50, 0.28);
+    width: 100%;
+    color: #e6e6e6;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviwe-info-container {
+    display: flex;
+}
+
+.review-img {
+    max-width: 200px;
+    margin-bottom: -4px;
+}
+
+.review-img-picture {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.review-info {
+    margin-left: 20px;
+    position: relative;
+}
+
+.review-info-title {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.review-info-author {
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.review-info-icons {
+    position: absolute;
+    bottom: 20px;
+}
+
+.review-info-icons-link {
+    text-decoration: none;
+    color: #e6e6e6;
+}
+
+.review-info-icons i {
+    font-size: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.review-info-icons i:hover {
+    transform: scale(1.5);
+    color: #9A5DC6;
+}
+
+.review-content {
+    width: 50%;
+}

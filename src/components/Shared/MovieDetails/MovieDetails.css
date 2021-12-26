@@ -142,13 +142,15 @@
 }
 
 .movie-details-content-info-button-wraper {
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
 }
 
 .movie-details-content-info-button {
     width: fit-content;
-    margin-top: 30px;
-    padding: 10px 20px;
+    text-decoration: none;
+    padding: 8px 18px;
     background-color: #e6e6e6;
     color: #54546D;
     font-size: 14px;
@@ -156,6 +158,7 @@
     letter-spacing: 2px;
     border-style: none;
     border-radius: 20px;
+    border: solid 2px #e6e6e6;
 }
 
 .movie-details-content-info-button:hover {

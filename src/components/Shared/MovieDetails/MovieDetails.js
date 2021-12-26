@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import constants from '../../../constants.js';
 import { useAuthContext } from '../../../contexts/AuthContext';
@@ -11,17 +11,13 @@ import './MovieDetails.css'
 function MovieDetails() {
     const { movieId } = useParams();
     const authData = useAuthContext();
-    const navigate = useNavigate();
-    if (authData.user === null) {
-        navigate('/login');
-    }
     const [movieDetails] = useMovieDetailsState(movieId);
-    const [userInfo] = useUserInfoState(authData.user.uid);
-    const [isMovieInWatchList, setISMovieInWatchList] = useState(false);
+    const [userInfo] = useUserInfoState(authData.user);
+    const [isMovieInWatchList, setIsMovieInWatchList] = useState(false);
 
     console.log(userInfo);
     if (userInfo && userInfo.watchList && userInfo.watchList.find(x => x.movieId === movieId) && !isMovieInWatchList) {
-        setISMovieInWatchList(true);
+        setIsMovieInWatchList(true);
     }
 
     let countryElementPrefix = '';
@@ -29,7 +25,7 @@ function MovieDetails() {
         countryElementPrefix = movieDetails.production_countries.length > 1 ? 'Countries' : 'Country';
     }
 
-    async function watchListAddClickHandler() {
+    const watchListAddClickHandler = async() => {
         if (!authData.user) {
             return;
         }
@@ -44,19 +40,19 @@ function MovieDetails() {
         };
         userInfo.watchList.push(movieData);
         await updateUserCollection(userInfo);
-        setISMovieInWatchList(true);
+        setIsMovieInWatchList(true);
     }
 
-    async function watchListRemoveClickHandler() {
+    const watchListRemoveClickHandler = async() => {
         if (!authData.user) {
             return;
         }
 
-        const removeIndex = userInfo.watchList.findIndex(movie => movie.id === movieId);
+        const removeIndex = userInfo.watchList.findIndex(movie => movie.movieId === movieId);
         userInfo.watchList.splice(removeIndex, 1);
 
         await updateUserCollection(userInfo);
-        setISMovieInWatchList(false);
+        setIsMovieInWatchList(false);
     }
 
     return (
@@ -116,6 +112,7 @@ function MovieDetails() {
                     </article>
                     <p className="movie-details-content-info-description">{movieDetails.overview}</p>
                     <div className="movie-details-content-info-button-wraper">
+                        <Link to="/reviews/create" state={{ movie: movieDetails }} className="movie-details-content-info-button">Create Review</Link>
                         {isMovieInWatchList
                             ? <button className="movie-details-content-info-button" onClick={watchListRemoveClickHandler}>Remove from watchlist</button>
                             : <button className="movie-details-content-info-button" onClick={watchListAddClickHandler}>Add to watchlist</button>
