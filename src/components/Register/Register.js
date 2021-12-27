@@ -13,7 +13,7 @@ function Register() {
 
     useEffect(() => {
         if (authData.user) {
-            navigate('/profile');
+            navigate('/');
         }
     }, [authData.user, navigate]);
 

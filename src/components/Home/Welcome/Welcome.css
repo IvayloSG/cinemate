@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&display=swap');
+
 .welcome {
     display: flex;
     max-width: 1400px;
@@ -13,18 +15,23 @@
 .welcome-content-title {
     font-size: 36px;
     color: #9A5DC6;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
 }
 
 .welcome-content-text {
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 1.1px;
     color: #9A5DC6;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    text-align: justify;
 }
 
 .welcome-content-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 .welcome-content-buttons-button {
@@ -46,4 +53,11 @@
 .welcome-picture {
     border-radius: 10px;
     height: 100%;
+}
+
+.welcome-link-element {
+    cursor: pointer;
+    text-decoration: none;
+    color: #9A5DC6;
+    font-weight: 800;
 }

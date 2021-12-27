@@ -15,14 +15,18 @@ function Welcome() {
 
     return (
         <section className="welcome">
-              <div className="welcome-picture-container">
+            <div className="welcome-picture-container">
                 <img className="welcome-picture" src="https://i.postimg.cc/DmkcYpY3/Welcome-Header-Pic.jpg" alt="cinema pic" />
             </div>
             <article className="welcome-content">
                 <h1 className="welcome-content-title">Welcome to Cinemate</h1>
                 <p className="welcome-content-text">
-                    Some very nice and inspiring text. That will explain how great is the
-                    product and how much it will help my development as a programmer.
+                    Cinemate was started as final project for Front End Development module at 
+                    <a href="https://www.softuni.bg" className="welcome-link-element"> SoftUni</a>.
+                    Here you can find everything about newcomming and most popular movies, you can read 
+                    reviews about them, or just have great time. The project would not be possible without 
+                    <a href="https://www.themoviedb.org/" className="welcome-link-element"> TMDB</a>. 
+                    They are absolutely great and free!
                 </p>
                 {authData.user
                     ? ''
