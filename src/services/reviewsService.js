@@ -17,17 +17,19 @@ async function updateReviewsCollection(data) {
 }
 
 async function deleteReviewById(reviewId) {
-    try {
         const response = await deleteDoc(doc(firebase.db, "reviews", reviewId));
         return response;
-    } catch (error) {
-        console.log(error.message);
-    }
+}
+
+async function getReviewDetailsById(reviewId) {
+    const query = await getDocs(collection(firebase.db, 'reviews'));
+    return query.docs.map(doc => doc.data()).find(x => x.id === reviewId);
 }
 
 export {
     addReviewToCollection,
     getAllReviews,
     updateReviewsCollection,
-    deleteReviewById
+    deleteReviewById,
+    getReviewDetailsById
 }

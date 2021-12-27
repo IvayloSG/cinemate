@@ -15,12 +15,7 @@ function CreateReview() {
     const [errorState, setErrorState] = useState('');
 
     useEffect(() => {
-        if(!authData.user) {
-            navigate('/login')
-        }
-        if (!location.state) {
-            navigate('/');
-        }
+      
     }, [authData.user, location, location.state, navigate]);
 
     const createReviewSubmitHandler = async (e) => {

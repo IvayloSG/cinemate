@@ -1,0 +1,34 @@
+.profile-wrapper {
+    position: relative;
+    max-width: 1400px;
+    min-height: 75vh;
+    margin: 0 auto;
+}
+
+.profile {
+   width: 100%;
+}
+
+.profile-title {
+    text-align: center;
+    color: #9A5DC6;
+    font-size: 32px;
+}
+
+.profile-horizontal-line {
+    width: 80%;
+    margin: 20px auto;
+    height: 5px;
+    border: none;
+    background: linear-gradient(67deg, rgba(84,84,109,1) 0%, rgba(154,93,198,1) 50%, rgba(84,84,109,1) 100%);
+}
+
+.profile-watch-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-reviews {
+    display: flex;
+    flex-wrap: wrap;
+}

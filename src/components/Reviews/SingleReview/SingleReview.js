@@ -76,7 +76,7 @@ function SingleReview({ review }) {
                                 {!isAuthor
                                     ? (!isLiked ? <i className="fas fa-thumbs-up" onClick={reviewLikeOnclickHandler}></i> : <i className="fas fa-thumbs-down" onClick={reviewDislikeOnclickHandler}></i>)
                                     : ""}
-                                {isAuthor ? <Link to="/reviews/edit" state={{ movie: review }} className="review-info-icons-link"><i className="fas fa-edit"></i></Link> : ""}
+                                {isAuthor ? <Link to={`/reviews/edit/${review.id}`} className="review-info-icons-link"><i className="fas fa-edit"></i></Link> : ""}
                                 {isAuthor ? <i className="fas fa-trash-alt" onClick={reviewDeleteOnClickHandler}></i> : ""}
                             </section>
                         </article>

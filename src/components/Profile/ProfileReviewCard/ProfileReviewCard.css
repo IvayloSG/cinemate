@@ -1,0 +1,35 @@
+.profile-review-card {
+    width: 30%;
+    margin-right: 22px;
+    margin-left: 22px;
+    margin-bottom: 30px;
+    background-color: #54546D;
+    color: #e6e6e6;
+    border-radius: 20px;
+}
+
+.profile-review-card-info {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-review-card-info-title {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.profile-review-card-content {
+    padding: 10px;
+}
+
+.profile-review-card-content-title {
+    text-align: center;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.profile-review-card-content-text {
+    text-align: justify;
+    font-size: 12px;
+}

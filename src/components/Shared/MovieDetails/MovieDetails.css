@@ -99,6 +99,7 @@
 
 .movie-details-content-info-genres {
     width: 80%;
+    letter-spacing: 1px;
     max-height: fit-content;
     display: flex;
     flex-wrap: wrap;
