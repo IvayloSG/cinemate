@@ -1,20 +1,20 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
-import { AuthProvider } from "./contexts/AuthContext";
-import CreateReview from "./components/Reviews/CreateReview/CreateReview";
-import EditReview from "./components/Reviews/EditReview/EditRevieview";
-import Explore from "./components/Explore/Explore";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Logout from "./components/Logout/Logout";
-import MovieDetails from "./components/Shared/MovieDetails/MovieDetails";
-import NotFound from "./components/Shared/NotFound/NotFound";
-import Profile from "./components/Profile/Profile";
-import Register from "./components/Register/Register";
-import Reviews from "./components/Reviews/Reviews";
-import "./App.css";
+import './App.css';
+import { AuthProvider } from './contexts/AuthContext';
+import CreateReview from './components/Reviews/CreateReview/CreateReview';
+import EditReview from './components/Reviews/EditReview/EditRevieview';
+import Explore from './components/Explore/Explore';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout';
+import MovieDetails from './components/Shared/MovieDetails/MovieDetails';
+import NotFound from './components/Shared/NotFound/NotFound';
+import Profile from './components/Profile/Profile';
+import Register from './components/Register/Register';
+import Reviews from './components/Reviews/Reviews';
 
 function App() {
   return (

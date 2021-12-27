@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import constants from "../../../constants.js";
 import "./MovieCard.css";
+import constants from "../../../constants.js";
 
 function MovieCard({ movie }) {
   const navigate = useNavigate();

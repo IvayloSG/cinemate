@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
+import './Upcoming.css';
+import { getUpcomingMovies } from '../../../services/movieService.js';
 import MovieCard from '../MovieCard/MovieCard';
-import { getUpcomingMovies } from "../../../services/movieService.js";
-import "./Upcoming.css";
 
 function Upcoming() {
   const [upcomming, setUpcoming] = useState([]);
 
   useEffect(() => {
-    getUpcomingMovies().then((movies) => {
-        setUpcoming(movies.results);
-    });
+    let isMounted = true;
+
+    getUpcomingMovies()
+      .then((movies) => {
+        if (isMounted) {
+          setUpcoming(movies.results);
+        }
+      });
+
+    return () => isMounted = false;
   }, []);
 
   return (

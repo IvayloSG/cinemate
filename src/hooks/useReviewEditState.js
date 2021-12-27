@@ -6,10 +6,16 @@ const useReviewEditState = (reviewId) => {
     const [reviewDetails, setReviewDetails] = useState({});
 
     useEffect(() => {
+        let isMounted = true;
+
         getReviewDetailsById(reviewId)
             .then(review => {
-                setReviewDetails(review);
+                if (isMounted) {
+                    setReviewDetails(review);
+                }
             })
+
+        return () => isMounted = false;
     }, [reviewId]);
 
     return [

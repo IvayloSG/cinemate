@@ -12,10 +12,16 @@ const useUserInfoState = (currentUser) => {
             navigate('/login');
             return;
         }
+        let isMounted = true;
+
         getUserById(currentUser.uid)
             .then(user => {
-                setUserInfo(user);
+                if (isMounted) {
+                    setUserInfo(user);
+                }
             })
+
+        return () => isMounted = false;
     }, [currentUser, navigate]);
 
     return [

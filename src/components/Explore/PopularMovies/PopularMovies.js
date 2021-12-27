@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 
-import MovieCard from '../MovieCard/MovieCard';
-import { getPopularMovies } from "../../../services/movieService.js";
 import "./PopularMovies.css";
+import { getPopularMovies } from "../../../services/movieService.js";
+import MovieCard from '../MovieCard/MovieCard';
 
 function PopularMovies() {
   const [popularMovies, setPopularMovies] = useState([]);
 
   useEffect(() => {
-    getPopularMovies().then((movies) => {
-      setPopularMovies(movies.results);
-    });
+    let isMounted = true;
+    getPopularMovies()
+      .then((movies) => {
+        if (isMounted) {
+          setPopularMovies(movies.results);
+        }
+      });
+
+    return () => isMounted = false;
   }, []);
 
   return (

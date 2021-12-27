@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
+import './SingleReview.css';
 import constants from '../../../constants';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { updateReviewsCollection, deleteReviewById } from '../../../services/reviewsService.js';
 import { getUserById, updateUserCollection } from '../../../services/authService';
-import './SingleReview.css';
 
 function SingleReview({ review }) {
     const [isDeleted, setIsDeleted] = useState(false);

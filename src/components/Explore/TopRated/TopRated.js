@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
+import './TopRated.css';
+import { getTopRatedMovies } from '../../../services/movieService.js';
 import MovieCard from '../MovieCard/MovieCard';
-import { getTopRatedMovies } from "../../../services/movieService.js";
-import "./TopRated.css";
 
 function TopRated() {
   const [topRated, setTopRated] = useState([]);
 
   useEffect(() => {
-    getTopRatedMovies().then((movies) => {
-      setTopRated(movies.results);
-    });
+    let isMounted = true;
+
+    getTopRatedMovies()
+      .then((movies) => {
+        if (isMounted) {
+          setTopRated(movies.results);
+        }
+      });
+
+    return () => isMounted = false;
   }, []);
 
   return (

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import constants from '../../../constants.js';
+import './MovieDetails.css'
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { updateUserCollection } from '../../../services/authService.js';
+import constants from '../../../constants.js';
 import useMovieDetailsState from '../../../hooks/useMovieDetailsState.js';
 import useUserInfoState from '../../../hooks/useUserInfoState.js';
-import './MovieDetails.css'
 
 function MovieDetails() {
     const { movieId } = useParams();
@@ -15,7 +15,6 @@ function MovieDetails() {
     const [userInfo] = useUserInfoState(authData.user);
     const [isMovieInWatchList, setIsMovieInWatchList] = useState(false);
 
-    console.log(userInfo);
     if (userInfo && userInfo.watchList && userInfo.watchList.find(x => x.movieId === movieId) && !isMovieInWatchList) {
         setIsMovieInWatchList(true);
     }

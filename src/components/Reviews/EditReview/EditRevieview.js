@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
-import useUserInfoState from '../../../hooks/useUserInfoState.js';
-import useReviewEditState from '../../../hooks/useReviewEditState.js';
-import { useAuthContext } from '../../../contexts/AuthContext';
-import { updateUserCollection } from '../../../services/authService.js';
-import { updateReviewsCollection } from '../../../services/reviewsService.js';
 import './EditReview.css';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import { updateReviewsCollection } from '../../../services/reviewsService.js';
+import { updateUserCollection } from '../../../services/authService.js';
+import useReviewEditState from '../../../hooks/useReviewEditState.js';
+import useUserInfoState from '../../../hooks/useUserInfoState.js';
 
 function EditReview() {
     const { reviewId } = useParams();
@@ -15,6 +15,10 @@ function EditReview() {
     const [errorState, setErrorState] = useState(false);
     const [userInfo] = useUserInfoState(authData.user);
     const [reviewDetails] = useReviewEditState(reviewId);
+
+    if (!authData.user) {
+        return <Navigate to="/login" />
+    }
 
     const editReviewSubmitHandler = (e) => {
         e.preventDefault();

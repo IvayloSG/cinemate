@@ -31,16 +31,16 @@
 .welcome-content-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
 .welcome-content-buttons-button {
-    font-size: 20px;
+    font-size: 17px;
     text-transform: uppercase;
     text-decoration: none;
     color: white;
     background-color: #9A5DC6;
-    padding: 10px 30px;
+    padding: 7px 20px;
     border-radius: 30px;
 }
 

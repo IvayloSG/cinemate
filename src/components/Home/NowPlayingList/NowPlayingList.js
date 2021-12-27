@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import NowPlayingMovie from './NowPlayingMovie/NowPlayingMovie'
-import { getNowPlaying } from '../../../services/movieService.js'
+
 import './NowPlayingList.css';
+import { getNowPlaying } from '../../../services/movieService.js'
+import NowPlayingMovie from './NowPlayingMovie/NowPlayingMovie'
 
 function NowPlayingList() {
     const [nowPlayingMovies, setNowPlayingMovies] = useState([]);

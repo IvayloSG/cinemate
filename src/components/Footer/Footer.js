@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Notify from '../Shared/Notify/Notify';
-import '../Shared/Notify/Notify';
+
 import './Footer.css';
+import Notify from '../Shared/Notify/Notify';
 
 function Footer() {
-    const notificationMessage = "This feature will be implemented soon!";
     const [notify, setNotify] = useState(false);
+    const notificationMessage = "This feature will be implemented soon!";
 
     const onClickHandler = (e) => {
         if (e.target.tagName === 'I') {
@@ -22,7 +22,7 @@ function Footer() {
                 <section className="footer-container-icons">
                     {notify ? <Notify message={notificationMessage} /> : ''}
                     <p className="footer-container-icons-text">Soon on:</p>
-                    <ul className="footer-container-icons-list" onClick={ onClickHandler }>
+                    <ul className="footer-container-icons-list" onClick={onClickHandler}>
                         <li className="footer-container-icons-list-element">
                             <i className="fab fa-facebook"></i>
                         </li>

@@ -1,19 +1,13 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router';
+import { Navigate, Link } from 'react-router-dom';
 
+import './Login.css'
 import { useAuthContext } from '../../contexts/AuthContext.js';
 import { login } from '../../services/authService.js'
-import './Login.css'
 
 function Login() {
-    const navigate = useNavigate();
     const authData = useAuthContext();
     const [errorState, setErrorState] = useState('');
-
-    if (authData.user) {
-        navigate('/profile');
-    }
 
     const loginSubmitHandler = (e) => {
         e.preventDefault();
@@ -43,7 +37,7 @@ function Login() {
 
         login(email, password)
             .then(() => {
-                navigate('/');
+                return <Navigate to="/"></Navigate>
             })
             .catch((error) => {
                 setErrorState(error.message);
@@ -59,6 +53,9 @@ function Login() {
         return;
     }
 
+    if (authData.user) {
+        return <Navigate to="/"></Navigate>
+    }
     return (
         <section className="login">
             <h1 className="login-title">Sign In</h1>

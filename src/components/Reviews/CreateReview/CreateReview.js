@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import constants from '../../../constants.js';
-import { addReviewToCollection } from '../../../services/reviewsService.js'
-import { getUserById, updateUserCollection } from '../../../services/authService'
-import { generateId } from '../../../services/utilService.js';
-import { useAuthContext } from '../../../contexts/AuthContext';
 import './CreateReview.css';
+import { addReviewToCollection } from '../../../services/reviewsService.js'
+import { generateId } from '../../../services/utilService.js';
+import { getUserById, updateUserCollection } from '../../../services/authService'
+import { useAuthContext } from '../../../contexts/AuthContext';
+import constants from '../../../constants.js';
 
 function CreateReview() {
     const location = useLocation();
@@ -14,9 +14,9 @@ function CreateReview() {
     const navigate = useNavigate();
     const [errorState, setErrorState] = useState('');
 
-    useEffect(() => {
-      
-    }, [authData.user, location, location.state, navigate]);
+    if (!authData.user || !location.state) {
+        return <Navigate to="/"/>
+    }
 
     const createReviewSubmitHandler = async (e) => {
         e.preventDefault();

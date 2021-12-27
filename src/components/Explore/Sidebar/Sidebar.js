@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import "./Sidebar.css";
+import './Sidebar.css';
 
 function Sidebar() {
   const clickHandler = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -40,7 +40,7 @@ function Sidebar() {
         </li>
       </ul>
       <article className="sidebar-scroll-up">
-        <i class="fas fa-chevron-circle-up" onClick={clickHandler}></i>
+        <i className="fas fa-chevron-circle-up" onClick={clickHandler}></i>
       </article>
     </aside>
   );

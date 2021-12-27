@@ -1,21 +1,20 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, Routes, Route } from 'react-router-dom';
 
+import './Explore.css';
 import { useAuthContext } from '../../contexts/AuthContext';
-import DailyTrending from "./DailyTrending/DailyTrending";
-import PopularMovies from "./PopularMovies/PopularMovies";
-import TopRated from "./TopRated/TopRated";
-import Sidebar from "./Sidebar/Sidebar";
-import Upcomming from "./Upcoming/Upcoming";
-import WeeklyTrending from "./WeeklyTrending/WeeklyTrending";
-import "./Explore.css";
+import DailyTrending from './DailyTrending/DailyTrending';
+import PopularMovies from './PopularMovies/PopularMovies';
+import Sidebar from './Sidebar/Sidebar';
+import TopRated from './TopRated/TopRated';
+import Upcomming from './Upcoming/Upcoming';
+import WeeklyTrending from './WeeklyTrending/WeeklyTrending';
 
 function Explore() {
-const navigate = useNavigate();
-const authData = useAuthContext();
-if (!authData.user) {
-  navigate('/login');
-}
+  const authData = useAuthContext();
+
+  if (!authData.user) {
+    return(<Navigate to="/login"></Navigate>)
+  }
 
   return (
     <section className="explore">

@@ -6,10 +6,16 @@ const useMovieDetailsState = (movieId) => {
     const [movieDetails, setMovieDetails] = useState({});
 
     useEffect(() => {
+        let isMounted = true;
+
         getMovieDetailsById(movieId)
             .then(movie => {
-                setMovieDetails(movie);
+                if (isMounted) {
+                    setMovieDetails(movie);
+                }
             })
+
+            return () => isMounted = false;
     }, [movieId]);
 
     return [

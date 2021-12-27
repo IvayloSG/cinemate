@@ -1,21 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
-import { register, addUserToCollection } from '../../services/authService.js'
-import { useAuthContext } from '../../contexts/AuthContext.js';
 import './Register.css'
+import { useAuthContext } from '../../contexts/AuthContext.js';
+import { register, addUserToCollection } from '../../services/authService.js'
 
 function Register() {
-    const navigate = useNavigate();
     const [errorState, setErrorState] = useState("");
+    const navigate = useNavigate();
     const authData = useAuthContext();
-
-    useEffect(() => {
-        if (authData.user) {
-            navigate('/');
-        }
-    }, [authData.user, navigate]);
 
     const registerSubmitHandler = (e) => {
         e.preventDefault();
@@ -35,7 +28,7 @@ function Register() {
             setTimeout(() => {
                 setErrorState('');
             }, 10000);
-            
+
             return;
         }
 
@@ -47,7 +40,7 @@ function Register() {
             setTimeout(() => {
                 setErrorState('');
             }, 10000);
-            
+
             return;
         }
 
@@ -65,36 +58,40 @@ function Register() {
             setTimeout(() => {
                 setErrorState('');
             }, 10000);
-            
+
             return;
         }
 
         register(email, password)
-        .then((result) => {
-            const userData = {
-                id: result.user.uid,
-                email: email,
-                registrationDate: new Date().toLocaleString(),
-                watchList: [],
-                reviews: []
-            }
-            addUserToCollection(userData)
+            .then((result) => {
+                const userData = {
+                    id: result.user.uid,
+                    email: email,
+                    registrationDate: new Date().toLocaleString(),
+                    watchList: [],
+                    reviews: []
+                }
+                addUserToCollection(userData)
 
-            navigate('/');
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            setErrorState (errorMessage);
-            setTimeout(() => {
-                setErrorState('');
-            }, 10000)
-          });
-    } 
+                navigate('/');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setErrorState(errorMessage);
+                setTimeout(() => {
+                    setErrorState('');
+                }, 10000)
+            });
+    }
 
     const registerClickErrorHandler = () => {
         setErrorState('');
         return;
-    } 
+    }
+
+    if (authData.user) {
+        return <Navigate to="/"></Navigate>
+    }
 
     return (
         <section className="register">
@@ -102,9 +99,9 @@ function Register() {
             <p className="register-text">Already have an account?
                 <Link className="register-text-login" to="/login">Log In</Link>
             </p>
-            <h6 className="register-error-message" onClick={ registerClickErrorHandler }>{errorState}</h6>
-            <form className="register-form" method="POST" onSubmit={ registerSubmitHandler }>
-                <div className="register-form-field-container"> 
+            <h6 className="register-error-message" onClick={registerClickErrorHandler}>{errorState}</h6>
+            <form className="register-form" method="POST" onSubmit={registerSubmitHandler}>
+                <div className="register-form-field-container">
                     <label htmlFor='email'>Email</label>
                     <input id="email" className="register-form-text" name="email" type="text"></input>
                 </div>

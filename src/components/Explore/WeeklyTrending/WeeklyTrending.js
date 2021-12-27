@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
+import './WeeklyTrending.css';
+import { getWeeklyTrendingMovies } from '../../../services/movieService.js';
 import MovieCard from '../MovieCard/MovieCard';
-import { getWeeklyTrendingMovies } from "../../../services/movieService.js";
-import "./WeeklyTrending.css";
 
 function WeeklyTrending() {
   const [weeklyTrending, setWeeklyTrending] = useState([]);
 
   useEffect(() => {
-    getWeeklyTrendingMovies().then((movies) => {
-        setWeeklyTrending(movies.results);
-    });
+    let isMounted = true;
+
+    getWeeklyTrendingMovies()
+      .then((movies) => {
+        if (isMounted) {
+          setWeeklyTrending(movies.results);
+        }
+      });
+
+    return () => isMounted = false;
   }, []);
 
   return (

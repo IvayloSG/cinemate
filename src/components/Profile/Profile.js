@@ -1,15 +1,19 @@
+import { Navigate } from 'react-router-dom';
+
 import './Profile.css';
-import useUserInfoState from '../../hooks/useUserInfoState';
+import { useAuthContext } from '../../contexts/AuthContext';
+import Loader from '../Shared/Loader/Loader';
 import ProfileReviewCard from './ProfileReviewCard/ProfileReviewCard';
 import WatchListCard from './WatchingListCard/WatchListCard';
-import Loader from '../Shared/Loader/Loader';
-import { useAuthContext } from '../../contexts/AuthContext';
+import useUserInfoState from '../../hooks/useUserInfoState';
 
 function Profile() {
     const authData = useAuthContext();
     const [userInfo] = useUserInfoState(authData.user);
 
-    console.log(userInfo);
+    if (!authData.user) {
+        return <Navigate to="/login"/>;
+    }
 
     const profilePage = (
         <section className="profile">
@@ -17,7 +21,7 @@ function Profile() {
             <hr className='profile-horizontal-line' />
             <section className="profile-watch-list">
                 {userInfo && userInfo.watchList
-                    ? userInfo.watchList.map(wm => <WatchListCard key={wm.id} movie={wm} />)
+                    ? userInfo.watchList.map(wm => <WatchListCard key={wm.movieId} movie={wm} />)
                     : ""
                 }
             </section>

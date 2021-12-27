@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
+import './DailyTrending.css';
+import { getDailyTrendingMovies } from '../../../services/movieService.js';
 import MovieCard from '../MovieCard/MovieCard';
-import { getDailyTrendingMovies } from "../../../services/movieService.js";
-import "./DailyTrending.css";
 
 function DailyTrending() {
   const [dailyTrending, setDailyTrending] = useState([]);
 
   useEffect(() => {
-    getDailyTrendingMovies().then((movies) => {
-        setDailyTrending(movies.results);
-    });
+    let isMounted = true;
+
+    getDailyTrendingMovies()
+      .then((movies) => {
+        if (isMounted) {
+          setDailyTrending(movies.results);
+        }
+      });
+
+    return () => isMounted = false;
   }, []);
 
   return (

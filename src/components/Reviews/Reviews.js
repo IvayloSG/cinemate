@@ -1,30 +1,35 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
+import './Reviews.css'
 import { useAuthContext } from '../../contexts/AuthContext';
 import { getAllReviews } from '../../services/reviewsService.js'
-import SingleReview from './SingleReview/SingleReview';
-import './Reviews.css'
 import Loader from '../Shared/Loader/Loader.js';
+import SingleReview from './SingleReview/SingleReview';
 
 function Reviews() {
     const [reviews, setReviews] = useState([]);
     const authData = useAuthContext();
-    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!authData.user) {
-            navigate('/login');
-            return;
-        }
+        let isMounted = true;
+
         getAllReviews()
             .then(review => {
-                setReviews(review);
+                if (isMounted) {
+                    setReviews(review);
+                }
             })
             .catch((error) => {
                 console.log(error.message)
             });
-    }, [authData.user, navigate]);
+
+        return () => isMounted = false;
+    }, []);
+
+    if (!authData.user) {
+        return <Navigate to="/login" />
+    }
 
     return (
         <section className="reviews">
