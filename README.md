@@ -23,7 +23,7 @@ Open http://localhost:3000 to view it in the browser.
 * Firebase
 
 ### Link
-[CineMAte](https://cinemate-2836f.web.app)
+[CineMate](https://cinemate-2836f.web.app)
 
 ### Author
 [Ivaylo Georgiev](https://github.com/IvayloSG)
